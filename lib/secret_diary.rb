@@ -31,12 +31,12 @@ class SecretDiary
 
   def unlock!
     # we DO NOT use the instance of security_class here (but we should!)
-    @locked = false if authenticated?
+    @security.unlock!
   end
 
   def lock!
     # we DO NOT use the instance of security_class here (but we should!)
-    @locked = true if authenticated?
+    @security.lock!
   end
 
   def new_entry(text)
@@ -53,12 +53,5 @@ class SecretDiary
     else
       puts 'This secret diary is locked!'
     end
-  end
-
-  def authenticated?
-    # we DO NOT use the instance of security_class here (but we should!)
-    puts "What's the secret word?"
-    input = gets.chomp
-    input == @secret_word
   end
 end
