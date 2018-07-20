@@ -6,17 +6,21 @@ class SecretDiary
 
 # by default, Security is passed to #initialize, but we can pass anything we like when we actually
 # come to create a new instance of SecretDiary.  If we pass nothing, Security will be used.
+
+# To isolate our SecretDiary tests, we can pass in a double of the Security class!
+
   def initialize(security_class = Security)
     @locked = false
     @secret_word = nil
     @entries = []
     # a new instance of the security_class is created and assigned to an instance var
+    # if we use a double of the Security class, it must respond correctly to '.new'
     @security = security_class.new
   end
 
   def secure!
     # we use the instance of security_class here
-    @security.secure!
+      @security.secure!
   end
 
   def locked?

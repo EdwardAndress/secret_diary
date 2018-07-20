@@ -21,6 +21,7 @@ class Security
     puts 'Please set your secret word'
     @secret_word = gets.chomp
     @locked = true
+    puts 'Your diary is now secret'
   end
 
   def authenticated?
